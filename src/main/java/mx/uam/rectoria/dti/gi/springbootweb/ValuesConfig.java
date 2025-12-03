@@ -1,11 +1,10 @@
 package mx.uam.rectoria.dti.gi.springbootweb;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-@SpringBootApplication
-//Forma 1 de usar archivos properties e importarlos al proyecto:
+@Configuration
+//Forma 2 de usar archivos properties e importarlos al proyecto:
 //
 //Aquí se pueden "importar" los n archivos de configuración properties
 // en el siguiente caso se ve como se: haría con 2 o más archivos de
@@ -16,10 +15,5 @@ import org.springframework.context.annotation.PropertySource;
 })*/
 //Y a continuación se puede hacer con un archivo properties
 @PropertySource("classpath:configuracion1.properties")
-public class SpringbootWebApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(SpringbootWebApplication.class, args);
-    }
-
+public class ValuesConfig {
 }
