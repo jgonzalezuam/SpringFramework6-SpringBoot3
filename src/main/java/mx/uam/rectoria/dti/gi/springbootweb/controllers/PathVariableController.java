@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -23,6 +24,10 @@ public class PathVariableController {
 
     @Value("${config.code}")
     private Integer code;
+
+    //Lenguaje de expresión de Spring
+    @Value("#{'${config.listOfValues}'.toUpperCase().split(',')}")
+    private List<String> valueList;
 
     //Por convención el message del path variable es el mismo que el del metodo
     @GetMapping("/baz/{message}")
@@ -54,6 +59,7 @@ public class PathVariableController {
         json.put("code", code);
         json.put("message", message);
         json.put("listOfValues", listOfValues);
+        json.put("valueList", valueList);
         return json;
     }
 }
