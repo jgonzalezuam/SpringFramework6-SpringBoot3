@@ -15,11 +15,10 @@ import org.springframework.context.annotation.PropertySource;
         @PropertySource("classpath:configuracion2.properties")
 })*/
 //Y a continuación se puede hacer con un archivo properties
-@PropertySource("classpath:configuracion1.properties")
+@PropertySource(value="classpath:configuracion1.properties", encoding = "UTF-8")
 public class SpringbootWebApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringbootWebApplication.class, args);
     }
-
 }
