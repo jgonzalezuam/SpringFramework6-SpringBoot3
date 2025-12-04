@@ -2,7 +2,9 @@ package mx.uam.rectoria.dti.gi.springbootweb.controllers;
 
 import mx.uam.rectoria.dti.gi.springbootweb.models.User;
 import mx.uam.rectoria.dti.gi.springbootweb.models.dto.ParamDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -38,6 +40,9 @@ public class PathVariableController {
     @Value("#{${config.valuesMap}.price}")
     private Double price;
 
+    @Autowired
+    private Environment environment;
+
     //Por convención el message del path variable es el mismo que el del metodo
     @GetMapping("/baz/{message}")
     public ParamDTO baz(@PathVariable String message) {
@@ -67,6 +72,8 @@ public class PathVariableController {
         json.put("username", username);
         json.put("code", code);
         json.put("message", message);
+        json.put("message2", environment.getProperty("config.message"));
+        json.put("code2", environment.getProperty("config.code", Long.class));
         json.put("listOfValues", listOfValues);
         json.put("valueList", valueList);
         json.put("valuesMap", valuesMap);
