@@ -12,5 +12,20 @@
         <li th:if="${user.email}" th:text="${user.email}"></li>
         <li th:if="${user.email == null}" th:text="${'No tiene e-mail'}"></li>
     </ol>
+    <a th:href="@{/detailsConlList}">Link a otro controlador</a>
+    <br />
+    <a th:href="@{'/api/params/foo?message=' + ${title}}">Link a controlador pasando una variable con thymeleaf</a><!-- Concatenación con un valor -->
+    <br />
+    <a th:href="@{/api/params/foo?message='hola desde un link estatico'}">Link con un valor estático (forma tradicional Get)</a>
+    <br />
+    <a th:href="@{/api/params/foo(message='hola desde un link propio de thymeleaf')}">Link con un valor estático (forma de pasar valor (uno) con thymeleaf)</a>
+    <br />
+    <a th:href="@{/api/params/bar(text='hola desde un link propio de thymeleaf', code=43186)}">Link con un valor estático (forma de pasar valores (dos o más) con thymeleaf)</a>
+    <br />
+    <a th:href="@{/api/var/baz/Valor de path variable}">Link con un valor Path variable con valor estático</a>
+    <br />
+    <a th:href="@{'/api/var/baz/' + ${title}}">Link con un valor Path variable con valor variable</a>
+    <br />
+    <a th:href="@{'/api/var/baz/' + 'Valor de path variable'}">Link con un valor Path variable con valor estático (usando comillas simples)</a>
 </body>
 </html>
